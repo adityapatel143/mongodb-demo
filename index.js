@@ -25,11 +25,21 @@ const courseSchema = new mongoose.Schema({
 // In other words creating Class
 const Course = mongoose.model("Course", courseSchema);
 
-// Saving data into database.
-// In other words creating object
-const course = new Course({
-    name: "Node.js course",
-    author: "Aditya",
-    tags: ["node", "backend"],
-    isPublished: true,
-});
+async function createCourse() {
+    // Creating data.
+    // In other words creating object
+    const course = new Course({
+        name: "Angular course",
+        author: "Aditya",
+        tags: ["angular", "frontend"],
+        isPublished: true,
+    });
+
+    // Saving Data
+    // This is an async process.
+    // it will return a unique ID.
+    const result = await course.save();
+    console.log(result);
+}
+
+createCourse();
